@@ -11,3 +11,10 @@ catkin_create_pkg tutorial rospy
 cd ..
 catkin_make
 ```
+
+# Check topic
+```
+rostopic list
+rostopic info /topic
+rostopic echo /topic
+```
