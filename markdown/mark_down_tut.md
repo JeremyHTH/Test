@@ -90,7 +90,7 @@ _italic_
 
 **Bold**
 
-**Bold**
+**Bold** 
 
 "~~" for Strikethrough
 
