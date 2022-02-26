@@ -10,6 +10,8 @@
 .count()  
 .find() # get the pos
 
+my_string = ' '.join(list_of_string) #return every word with separation  ' '
+
 ```
 ---
 
@@ -74,6 +76,10 @@ static method can be called as function **we dont need the actual object**
 
 ---
 
+## List vs tuple 
+
+tuple is one object and List in not 
+
 ## set and dictionary 
 
 Set do not duplicate and search fast 
@@ -81,11 +87,15 @@ Set do not duplicate and search fast
 ### dictionary 
 
 ```python 
-    x = {'key' : 4}
+    x = {'key' : 4, 'data': 5}
 
     for key, value in x.items()
         print(key,value)
 
     for key in x:
         print(key,x[key])
+
+    count = x.get('count')
+    
+    count = x.setdefault('count',0) #next time check would give a value of 0
 ```
