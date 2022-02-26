@@ -13,7 +13,7 @@ begin
 
     for i := 1 to n do 
         begin 
-            for j := 1 to n-i+1 do write(' ');
+            for j := 1 to n-i do write(' ');
             for j := 1 to i*2-1 do write('*');
             writeln;
         end;
