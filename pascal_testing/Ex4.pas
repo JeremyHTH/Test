@@ -11,7 +11,7 @@ begin
     while (pos(' ',input) <> 0) do
         begin 
             posit := pos(' ',input); 
-            temp :=  copy(input,1,posit-1); 
+            temp :=  copy(input,1,posit-1); //i 
             
             
             if (temp[1]>= 'A') and (temp[1] <= 'Z') then 
@@ -22,7 +22,7 @@ begin
                 temp[i] := chr(ord(temp[i]) -97+65);  
             write(temp + ' '); 
 
-            input := copy(input,posit+1,length(input)-posit) 
+            input := copy(input,posit+1,length(input)-posit) // temp => Wellcome!!
         end;
 
 
