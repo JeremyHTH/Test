@@ -1,5 +1,4 @@
-Program EX4;
-
+Program EX6;
 type Student = record 
                     StudentName : string;
                     ID : string;
@@ -8,7 +7,8 @@ type Student = record
             
 var Dataset : array[1..90] of Student;
     input,temp: string;
-    posit,waste : integer;
+    posit,waste, count,i: integer;
+    inf : text;
 
 function decoding(input:String):string;
 var output : String ;
@@ -36,7 +36,6 @@ begin
     decoding:=output;
 end;
 
-// function check(name:string;ID:string;Elective:integer) : boolean;
 function check(input:Student): boolean;
 var i,j :integer;
     output : boolean;
@@ -65,39 +64,37 @@ begin
     check := output
 end;
 
-
 begin 
-    write('input?');
-    // readln(input);
-    // input:= 'jack#S200861#3';
-    input:= 'gXZh#Pzxx53y#0';
-
-    with Dataset[1] do
+    count := 0;
+    temp := '';
+    assign(inf,'question.txt');
+    reset(inf);
+    while not eof(inf) do
+    begin 
+        count := count + 1;
+        readln(inf,temp);
+        writeln(temp);
+        with Dataset[count] do
         begin
-            StudentName := copy(input,1,pos('#',input)-1); 
-            input := copy(input,pos('#',input)+1,length(input)-pos('#',input)); 
-            ID := copy(input,1,pos('#',input)-1);
-            temp:= copy(input,pos('#',input)+1,length(input)-pos('#',input));
+            StudentName := copy(temp,1,pos('#',temp)-1); 
+            temp := copy(temp,pos('#',temp)+1,length(temp)-pos('#',temp)); 
+            ID := copy(temp,1,pos('#',temp)-1);
+            temp:= copy(temp,pos('#',temp)+1,length(temp)-pos('#',temp));
             StudentName := decoding(StudentName);
             ID := decoding(ID);
             temp := decoding(temp);
             val(temp,Elective,waste);
         end;
+    end;
+    close(inf);
 
-    with Dataset[2] do
-        begin
-            StudentName := 'Hey';
-            ID := 'S123456';
-            Elective := 1
-        end;
-    
-    with Dataset[1] do
-        begin
+    for i := 1 to count do 
+    begin 
+        with Dataset[i] do 
+        begin 
             write(StudentName+' '+ID+' ');
             writeln(Elective);
         end;
+    end;
 
-    writeln(check(Dataset[1]));
-    writeln(check(Dataset[2]));
-
-end.
+end. 
