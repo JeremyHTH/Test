@@ -16,6 +16,32 @@ sudo apt-get remove speech-dispatcher
 
 ```
 
+# Keychron function key
+```bash
+# testing
+echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode
+#forever
+echo "options hid_apple fnmode=0" | sudo tee -a /etc/modprobe.d/hid_apple.conf
+sudo update-initramfs -u #maybe (not yet tested)
+```
+
+# Appearance 
+```bash
+sudo apt install gnome-tweak-tool
+sudo apt install gnome-shell-extensions
+
+# theme
+git clone https://github.com/vinceliuice/Orchis-theme.git
+cd Orchis-theme/
+./install.sh -t orange
+
+# paper icon
+sudo add-apt-repository ppa:snwh/ppa
+sudo apt update
+sudo apt-get install paper-icon-theme:
+```
+
+---
 # Ros 
 
 ## Install Ros
