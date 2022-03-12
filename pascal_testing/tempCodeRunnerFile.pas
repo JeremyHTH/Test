@@ -1,3 +1,2 @@
-D) do
-        //     if not ((ID >= '0') and (ID <= '9')) then
-        //         output := false;
+for i := 1 to 100 do 
+        writeln(number[i]);

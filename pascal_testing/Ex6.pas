@@ -97,4 +97,34 @@ begin
         end;
     end;
 
+    write('What is the name of the student:');
+    readln(input);
+    for i := 1 to count do 
+    begin 
+        if Dataset[i].StudentName = input then 
+            with Dataset[i] do
+            begin 
+                writeln(StudentName,' ',ID,' ',Elective);
+            end;
+    end;
+
+    write('What is the name of student you want to delete');
+    readln(input);
+
+    for i := 1 to count do 
+    begin 
+        if Dataset[i].StudentName = input then 
+        begin 
+            for i := i to count-1 do 
+            begin 
+                Dataset[i].StudentName = Dataset[i+1].StudentName;
+                Dataset[i].ID =  Dataset[i+1].ID;
+                Dataset[i].Elective =  Dataset[i+1].Elective;
+            end
+            Dataset[count].StudentName = '';
+            Dataset[count].ID = '' ;
+            Dataset[count].Elective =  0;
+            count := count -1;
+        end;
+    end;
 end. 

@@ -29,3 +29,14 @@
 
 ## 1030
 - Wei Hiu Lam
+
+# 12/3
+
+## 0900
+- Chan Po Man
+- Cheung Yan Tung
+
+## 1030
+- Choy Cheuk Fung
+- Wei Hiu Lam
+- Chan Yiu Kwan
