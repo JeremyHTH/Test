@@ -7,12 +7,12 @@ type Student = record
             
 var Dataset : array[1..90] of Student;
     input,temp: string;
-    posit,waste, count,i: integer;
+    posit,waste, count,i,j: integer;
     inf : text;
 
 function decoding(input:String):string;
 var output : String ;
-    temp, i : integer;
+    temp, i: integer;
 begin 
     output := '';
     for i := 1 to length(input) do 
@@ -64,7 +64,62 @@ begin
     check := output
 end;
 
+procedure print_all_data();
+begin
+    for i := 1 to count do 
+    begin 
+        with Dataset[i] do 
+        begin 
+            write(StudentName+' '+ID+' ');
+            writeln(Elective);
+        end;
+    end;
+end;
+
+procedure delete();
 begin 
+    write('What is the name of student you want to delete: ');
+    readln(input);
+
+    for i := 1 to count do 
+    begin 
+        if Dataset[i].StudentName = input then 
+        begin 
+            for j := i to count-1 do
+            begin 
+                Dataset[j].StudentName := Dataset[j+1].StudentName;
+                Dataset[j].ID :=  Dataset[j+1].ID;
+                Dataset[j].Elective :=  Dataset[j+1].Elective;
+            end;
+            Dataset[count].StudentName := '';
+            Dataset[count].ID := '' ;
+            Dataset[count].Elective :=  0;
+            count := count -1;
+            write('found');
+        end;
+    end;
+end;
+
+procedure search();
+var found :boolean;
+begin
+    write('What is the name of the student: ');
+    readln(input);
+    for i := 1 to count do 
+    begin 
+        if Dataset[i].StudentName = input then 
+            with Dataset[i] do
+            begin 
+                writeln(StudentName,' ',ID,' ',Elective);
+                found := True;
+            end;
+    end;
+    if not found then 
+        writeln('not found');
+end;
+
+procedure init();
+begin
     count := 0;
     temp := '';
     assign(inf,'question.txt');
@@ -73,7 +128,7 @@ begin
     begin 
         count := count + 1;
         readln(inf,temp);
-        writeln(temp);
+        // writeln(temp);
         with Dataset[count] do
         begin
             StudentName := copy(temp,1,pos('#',temp)-1); 
@@ -87,44 +142,33 @@ begin
         end;
     end;
     close(inf);
+end;
 
-    for i := 1 to count do 
-    begin 
-        with Dataset[i] do 
-        begin 
-            write(StudentName+' '+ID+' ');
-            writeln(Elective);
-        end;
-    end;
-
-    write('What is the name of the student:');
+function menu():boolean;
+var input : char;
+    conti : boolean;
+begin 
+    conti := True;
+    writeln('Wellcome to the student data base');
+    writeln('1. List all the data');
+    writeln('2. Search');
+    writeln('3. Delete');
+    writeln('4. Exit');
+    write('Enter your choose: ');
     readln(input);
-    for i := 1 to count do 
-    begin 
-        if Dataset[i].StudentName = input then 
-            with Dataset[i] do
-            begin 
-                writeln(StudentName,' ',ID,' ',Elective);
-            end;
-    end;
+    case (input) of
+        '1' : print_all_data();
+        '2' : search();
+        '3' : delete();
+        '4' : conti := false;
+        else
+            writeln('incorrect input');
+    end; 
 
-    write('What is the name of student you want to delete');
-    readln(input);
+    menu := conti;
+end;                                                                                                                        
+begin 
+    init();
 
-    for i := 1 to count do 
-    begin 
-        if Dataset[i].StudentName = input then 
-        begin 
-            for i := i to count-1 do 
-            begin 
-                Dataset[i].StudentName = Dataset[i+1].StudentName;
-                Dataset[i].ID =  Dataset[i+1].ID;
-                Dataset[i].Elective =  Dataset[i+1].Elective;
-            end
-            Dataset[count].StudentName = '';
-            Dataset[count].ID = '' ;
-            Dataset[count].Elective =  0;
-            count := count -1;
-        end;
-    end;
+    while (menu()) do;
 end. 
