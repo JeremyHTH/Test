@@ -175,3 +175,28 @@ catkin_make     or      catkin build
 sudo apt install mysql-server
 sudo mysql_secure_installation
 ```
+
+# Setup Lan_ROS
+```bash 
+# add two line to both master and slave 
+
+#Master
+export ROS_MASTER_URI=http://192.168.1.1:11311
+export ROS_IP=192.168.1.1
+
+# slave
+export ROS_MASTER_URI=http://192.168.1.1:11311
+export ROS_IP=192.168.1.2
+
+# goto etc 
+cd ..
+cd .. 
+cd etc
+sudo gedit hosts
+#add to both master and slave
+192.168.1.1 ox06
+192.168.1.2 ox03
+
+
+#remember to ~/.bashrc after change 
+```
