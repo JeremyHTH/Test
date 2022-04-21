@@ -169,3 +169,9 @@ cd ..
 
 catkin_make     or      catkin build
 ```
+
+# Install mySQL
+```bash 
+sudo apt install mysql-server
+sudo mysql_secure_installation
+```

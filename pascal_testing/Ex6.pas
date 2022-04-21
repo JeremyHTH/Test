@@ -103,6 +103,7 @@ end;
 procedure search();
 var found :boolean;
 begin
+    found := false;
     write('What is the name of the student: ');
     readln(input);
     for i := 1 to count do 
