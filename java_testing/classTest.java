@@ -21,15 +21,7 @@ public static class A
     public A()
     {
 
-    }public A()
-    {
-
     }
-    public void mA()
-    {
-        System.out.println("MA");
-    }
-}
     public void mA()
     {
         System.out.println("MA");
